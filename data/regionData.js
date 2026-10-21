@@ -61,7 +61,7 @@ export const regionData = {
       population: "~22.4M",
       gateway: "KIX (Kansai Intl Airport)"
     },
-    destinations: [1, 7, 8, 9], // Kyoto, Osaka, Nara, Kobe
+    destinations: [1, 7, 8, 9],
     transitNote: "The Kansai corridor is bound by one of the densest private and national rail meshes globally. The JR Tokaido-Sanyo Shinkansen anchors the primary east-west spine connecting Kyoto, Shin-Osaka, and Shin-Kobe in under 30 minutes. Hankyu, Hanshin, Keihan, and Kintetsu private networks provide non-JR redundant links serving suburban belts and pilgrimage footpaths into Mount Koya and Yoshino.",
     climateNote: "Flanked by the Tamba highlands to the north, the Kii mountain spine to the south, and Osaka Bay to the west, Kansai experiences stark microclimates. Kyoto's closed basin results in sharp seasonal temperature deltas (hot humid summers and biting winters), whereas Kobe and southern Osaka benefit from maritime moderations created by the Seto Inland Sea wind tunnels."
   }

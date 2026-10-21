@@ -1,110 +1,181 @@
-import destinationData from "../data/destinationData";
-import Link from "next/link";
+"use client";
 
-function Destinations() {
-  const arr = destinationData.slice(0, 6);
+import { useState } from "react";
+import Link from "next/link";
+import destinationData from "../data/destinationData";
+
+export default function DestinationsPage() {
+  const [selectedRegion, setSelectedRegion] = useState("All Regions");
+
+  const regions = [
+    "All Regions",
+    "East Asia",
+    "Southern Europe",
+    "Scandinavia",
+    "South America",
+    "North Africa",
+  ];
+
+  const defaultList = destinationData.slice(0, 6);
+
+  const filteredList =
+    selectedRegion === "All Regions"
+      ? defaultList
+      : destinationData.filter((item) => {
+          if (selectedRegion === "South America") {
+            return item.region === "Central America" || item.region === "South America";
+          }
+          return item.region.toLowerCase().includes(selectedRegion.toLowerCase());
+        });
+
+  function renderCardIcon(code: string) {
+    if (code === "EA-01") {
+      return (
+        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6M2 7h20" />
+        </svg>
+      );
+    }
+    if (code === "SC-04") {
+      return (
+        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M2 6c3 0 3 2 6 2s3-2 6-2 3 2 6 2 3-2 6-2M2 12c3 0 3 2 6 2s3-2 6-2 3 2 6 2 3-2 6-2M2 18c3 0 3 2 6 2s3-2 6-2 3 2 6 2 3-2 6-2" />
+        </svg>
+      );
+    }
+    if (code === "CA-02") {
+      return (
+        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M3 20l9-14 9 14H3z" />
+        </svg>
+      );
+    }
+    if (code === "SE-08") {
+      return (
+        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M4 21h16M4 10h16M4 7l8-4 8 4M6 10v11M10 10v11M14 10v11M18 10v11" />
+        </svg>
+      );
+    }
+    if (code === "NA-03") {
+      return (
+        <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+          <path d="M2 19c3 0 4 1 6 1s4-1 6-1 4 1 6 1M12 3v13M8 16l4-13 7 13H8z" />
+        </svg>
+      );
+    }
+    return (
+      <svg className="w-4 h-4 text-slate-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M3 20l6-9 4 5 7-10 2 14H3z" />
+      </svg>
+    );
+  }
 
   return (
-    <>
-      <div className="w-[100vw] h-[16vw]">
-        <div className="w-[100%] text-[0.9vw] pl-[10vw] pt-[2vw] text-gray-500 font-bold">
-          CATALOGUE // 01 • LIVE SURVEY
+    <div className="max-w-7xl mx-auto px-6 py-8">
+      <div className="mb-8">
+        <div className="text-xs font-mono font-medium tracking-wider text-gray-500 uppercase mb-2">
+          {"CATALOGUE // 01 • LIVE SURVEY"}
         </div>
-        <div className="w-[100%] pl-[10vw] flex justify-between pr-[10vw] items-center">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div className="text-[2.5vw] font-bold">
+            <h1 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
               Explore destinations
-            </div>
-            <div className="text-[1.1vw] text-gray-600 mt-[0.5vw]">
+            </h1>
+            <p className="text-sm sm:text-base text-gray-600 mt-2">
               Browse curated travel places organized by geographic region and terrain.
-            </div>
+            </p>
           </div>
-          <div className="text-right">
-            <div className="text-[0.8vw] text-gray-500 font-bold">
+          <div className="md:text-right">
+            <div className="text-xs font-mono font-medium text-gray-500 uppercase">
               TOTAL RECORDED ENTITIES
             </div>
-            <div className="text-[1.3vw] font-bold">
+            <div className="text-xl font-bold text-gray-900">
               06 NODES ACTIVE
             </div>
           </div>
         </div>
 
-        <div className="w-[100%] pl-[10vw] mt-[2vw] flex gap-[1vw] items-center">
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold bg-emerald-100 text-emerald-800 border-emerald-600">
-            All Regions
-          </button>
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold text-gray-600">
-            East Asia
-          </button>
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold text-gray-600">
-            Southern Europe
-          </button>
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold text-gray-600">
-            Scandinavia
-          </button>
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold text-gray-600">
-            South America
-          </button>
-          <button className="border px-[1.2vw] py-[0.4vw] rounded-[1vw] text-[0.9vw] font-bold text-gray-600">
-            North Africa
-          </button>
+        <div className="flex items-center gap-2 mt-6 overflow-x-auto pb-2">
+          {regions.map((region) => {
+            const isActive = selectedRegion === region;
+            return (
+              <button
+                key={region}
+                onClick={() => setSelectedRegion(region)}
+                className={`px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-colors border ${
+                  isActive
+                    ? "bg-emerald-50 text-emerald-800 border-emerald-300 shadow-sm"
+                    : "bg-white text-gray-600 border-gray-300 hover:bg-gray-50 hover:text-gray-900"
+                }`}
+              >
+                {region}
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      <div className="w-[100vw] pl-[9vw] flex gap-[2vw] p-[1vw] flex-wrap mt-[2vw]">
-        {arr.map((e) => {
-          return (
-            <div key={e.id} className="w-[28%] h-[20vw] rounded-[0.5vw] border p-[1vw] flex flex-col justify-between">
-              <div className="w-[100%] h-[35%] bg-blue-50 border rounded-[0.4vw] flex justify-between items-center px-[1vw]">
-                <div className="text-[0.9vw] text-gray-700 font-bold">
-                  {e.loc}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {filteredList.map((item) => (
+          <div
+            key={item.id}
+            className="border border-gray-200 rounded-xl bg-white p-4 flex flex-col justify-between shadow-sm hover:border-gray-300 hover:shadow transition-all"
+          >
+            <div>
+              <div className="w-full bg-[#f1f5f9] border border-gray-200 rounded-lg px-3 py-2 flex items-center justify-between mb-4">
+                <div className="flex items-center gap-2">
+                  {renderCardIcon(item.code)}
+                  <span className="font-mono text-xs font-semibold text-slate-700">
+                    {item.loc}
+                  </span>
                 </div>
-                <div className="border bg-white px-[0.6vw] py-[0.2vw] text-[0.8vw] font-bold text-gray-600 rounded">
-                  {e.code}
-                </div>
+                <span className="bg-white border border-gray-200 rounded px-2 py-0.5 text-[11px] font-mono font-bold text-gray-700">
+                  {item.code}
+                </span>
               </div>
 
-              <div className="w-[100%] mt-[0.8vw]">
-                <div className="flex justify-between items-center">
-                  <div className="text-[1.4vw] font-bold">
-                    {e.name}
-                  </div>
-                  <div className="text-[0.8vw] font-bold text-gray-500">
-                    {e.tag}
-                  </div>
-                </div>
-                <div className="text-[0.9vw] text-gray-500 font-bold mt-[0.2vw]">
-                  {e.country} • {e.region}
-                </div>
-                <div className="text-[0.9vw] text-gray-600 mt-[0.5vw] line-clamp-2">
-                  {e.description}
-                </div>
+              <div className="flex items-start justify-between">
+                <h2 className="text-xl font-bold text-gray-900">
+                  {item.name}
+                </h2>
+                <span className="text-xs font-bold text-gray-400 uppercase tracking-wider">
+                  {item.tag}
+                </span>
               </div>
 
-              <div className="w-[100%] border-t pt-[0.8vw] mt-[0.5vw]">
-                <Link
-                  className="text-[1vw] font-bold text-emerald-800 flex items-center justify-between"
-                  href={`/destinations/${e.id}`}
-                >
-                  <span>{"View destination >"}</span>
-                  <span className="text-gray-400">•</span>
-                </Link>
+              <div className="text-xs font-medium text-gray-500 mt-0.5">
+                {item.country} • {item.region}
               </div>
+
+              <p className="text-xs text-gray-600 mt-3 line-clamp-3 leading-relaxed">
+                {item.description}
+              </p>
             </div>
-          );
-        })}
+
+            <div className="border-t border-gray-200 pt-3 mt-6 flex items-center justify-between">
+              <Link
+                href={`/destinations/${item.id}`}
+                className="text-xs font-semibold text-emerald-700 hover:text-emerald-800 flex items-center gap-1 transition-colors"
+              >
+                <span>View destination</span>
+                <span>→</span>
+              </Link>
+              <span className="text-gray-300 text-sm">•</span>
+            </div>
+          </div>
+        ))}
       </div>
 
-      <div className="w-[90vw] ml-[5vw] border rounded-[0.5vw] p-[1vw] mt-[3vw] mb-[4vw] flex justify-between items-center text-[0.9vw] text-gray-600">
-        <div>
-          ⓘ Destinations are systematically validated against public cartographic terrain datasets.
+      <div className="mt-8 border border-gray-200 rounded-lg p-3 bg-white flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
+        <div className="flex items-center gap-1.5">
+          <span className="text-gray-400 font-bold">ⓘ</span>
+          <span>Destinations are systematically validated against public cartographic terrain datasets.</span>
         </div>
-        <div className="font-bold">
+        <div className="font-mono font-medium text-gray-600">
           COORDINATE FORMAT: WGS84
         </div>
       </div>
-    </>
+    </div>
   );
 }
-
-export default Destinations;

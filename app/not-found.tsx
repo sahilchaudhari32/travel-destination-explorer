@@ -2,72 +2,72 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <div className="w-[100vw] flex flex-col items-center pt-[3vw] pb-[5vw]">
-      <div className="w-[70vw] border rounded-[0.5vw] p-[2.5vw] bg-white">
-        <div className="flex justify-between items-center text-[0.85vw]">
-          <span className="border px-[0.8vw] py-[0.2vw] rounded-full bg-gray-100 text-gray-700 font-bold">
+    <div className="max-w-3xl mx-auto px-6 py-12">
+      <div className="border border-gray-200 rounded-xl bg-white p-8 shadow-sm">
+        <div className="flex justify-between items-center text-xs">
+          <span className="border border-gray-200 px-3 py-1 rounded-full bg-gray-100 text-gray-700 font-bold">
             • 404 • Unresolved Destination Path
           </span>
-          <span className="font-mono text-gray-500">REF: ERR_PATH_UNRESOLVED</span>
+          <span className="font-mono text-gray-400">REF: ERR_PATH_UNRESOLVED</span>
         </div>
 
-        <div className="mt-[2vw]">
-          <div className="text-[2.5vw] font-bold text-gray-900">
+        <div className="mt-6">
+          <h1 className="text-3xl font-extrabold text-gray-900 tracking-tight">
             Destination or region not found
-          </div>
-          <div className="text-[1.1vw] text-gray-600 mt-[0.8vw] leading-relaxed max-w-[50vw]">
+          </h1>
+          <p className="text-sm text-gray-600 mt-2 leading-relaxed">
             The requested geographic route identifier could not be resolved within the Wayfinder spatial database. The path may have changed or the slug syntax is invalid.
-          </div>
+          </p>
         </div>
 
-        <div className="flex gap-[1.5vw] mt-[2vw]">
+        <div className="flex flex-wrap gap-3 mt-6">
           <Link
-            href={"/"}
-            className="bg-emerald-800 text-white font-bold px-[1.5vw] py-[0.8vw] rounded-[0.4vw] text-[0.95vw]"
+            href="/"
+            className="bg-emerald-800 hover:bg-emerald-900 text-white font-semibold px-4 py-2 rounded text-xs transition-colors"
           >
             ↗ Return to Destinations
           </Link>
           <Link
-            href={"/regions"}
-            className="border font-bold text-gray-800 px-[1.5vw] py-[0.8vw] rounded-[0.4vw] text-[0.95vw] bg-gray-50"
+            href="/regions"
+            className="border border-gray-300 hover:bg-gray-50 text-gray-800 font-semibold px-4 py-2 rounded text-xs bg-gray-50 transition-colors"
           >
             ▦ Browse All Regions
           </Link>
         </div>
 
-        <div className="border-t mt-[2.5vw] pt-[1.5vw]">
-          <div className="flex justify-between items-center text-[0.8vw] font-bold text-gray-500">
+        <div className="border-t border-gray-200 mt-8 pt-6">
+          <div className="flex justify-between items-center text-xs font-semibold text-gray-500 mb-3">
             <span>Suggested Directory Shortcuts</span>
-            <span>SPATIAL INDEX VERIFIED</span>
+            <span className="font-mono text-[11px] text-gray-400">SPATIAL INDEX VERIFIED</span>
           </div>
 
-          <div className="mt-[1vw] border rounded divide-y">
+          <div className="border border-gray-200 rounded-lg divide-y divide-gray-200 overflow-hidden text-xs">
             <Link
-              href={"/destinations/1"}
-              className="flex justify-between items-center p-[0.8vw] text-[0.95vw] hover:bg-gray-50"
+              href="/destinations/1"
+              className="flex justify-between items-center p-3 hover:bg-gray-50 transition-colors"
             >
-              <span className="font-bold">Kyoto, Japan</span>
-              <span className="text-gray-500 font-mono text-[0.85vw]">/destinations/1 →</span>
+              <span className="font-semibold text-gray-900">Kyoto, Japan</span>
+              <span className="text-gray-400 font-mono">/destinations/1 →</span>
             </Link>
             <Link
-              href={"/destinations/2"}
-              className="flex justify-between items-center p-[0.8vw] text-[0.95vw] hover:bg-gray-50"
+              href="/destinations/2"
+              className="flex justify-between items-center p-3 hover:bg-gray-50 transition-colors"
             >
-              <span className="font-bold">Bergen, Norway</span>
-              <span className="text-gray-500 font-mono text-[0.85vw]">/destinations/2 →</span>
+              <span className="font-semibold text-gray-900">Bergen, Norway</span>
+              <span className="text-gray-400 font-mono">/destinations/2 →</span>
             </Link>
             <Link
-              href={"/regions/asia/japan/kansai"}
-              className="flex justify-between items-center p-[0.8vw] text-[0.95vw] hover:bg-gray-50"
+              href="/regions/asia/japan/kansai"
+              className="flex justify-between items-center p-3 hover:bg-gray-50 transition-colors"
             >
-              <span className="font-bold">Kansai Region</span>
-              <span className="text-gray-500 font-mono text-[0.85vw]">/regions/asia/japan/kansai →</span>
+              <span className="font-semibold text-gray-900">Kansai Region</span>
+              <span className="text-gray-400 font-mono">/regions/asia/japan/kansai →</span>
             </Link>
           </div>
         </div>
 
-        <div className="border rounded-[0.4vw] p-[1vw] mt-[2vw] bg-slate-50 font-mono text-[0.8vw] text-gray-600">
-          <div className="font-bold text-black mb-[0.4vw]">ROUTER DIAGNOSTIC NOTE</div>
+        <div className="border border-gray-200 rounded-lg p-4 mt-6 bg-slate-50 font-mono text-[11px] text-gray-600">
+          <div className="font-bold text-gray-900 mb-1">ROUTER DIAGNOSTIC NOTE</div>
           <div>query_target: srcdoc</div>
           <div>resolution_tree: null [index match fail at root:destinations/]</div>
           <div>dispatch_timestamp: 2026-10-19T16:55:00.000Z</div>
