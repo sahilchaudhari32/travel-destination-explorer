@@ -42,12 +42,6 @@ export default function AboutPage() {
           >
             Browse Regions
           </Link>
-          <Link
-            href="/manage"
-            className="border border-gray-300 hover:bg-gray-50 text-gray-700 font-semibold px-4 py-2 rounded-md text-xs transition-colors"
-          >
-            Manage Data Nodes
-          </Link>
         </div>
       </div>
     </div>

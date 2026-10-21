@@ -36,12 +36,6 @@ export default function RootLayout({
                   Regions
                 </Link>
                 <Link
-                  href="/manage"
-                  className="h-full flex items-center border-b-2 border-transparent px-1 text-sm font-medium text-gray-600 hover:text-gray-900"
-                >
-                  Manage
-                </Link>
-                <Link
                   href="/about"
                   className="h-full flex items-center border-b-2 border-transparent px-1 text-sm font-medium text-gray-600 hover:text-gray-900"
                 >
@@ -55,7 +49,7 @@ export default function RootLayout({
                 GEO.INDEX v2.4
               </span>
               <Link
-                href="/manage"
+                href="/regions"
                 className="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors"
               >
                 Plan Trip

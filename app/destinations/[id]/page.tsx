@@ -55,12 +55,6 @@ export default async function DestinationDetailPage({
 
           <div className="flex items-center gap-3">
             <Link
-              href="/manage"
-              className="border border-gray-300 hover:bg-gray-50 text-gray-700 px-4 py-2 rounded-md text-sm font-semibold transition-colors"
-            >
-              Manage Node
-            </Link>
-            <Link
               href="/regions/asia/japan/kansai"
               className="bg-emerald-700 hover:bg-emerald-800 text-white px-4 py-2 rounded-md text-sm font-semibold transition-colors"
             >
